@@ -17,11 +17,14 @@
 
 ---
 
-📦 Installation & Deployment
+## 📦 Installation & Deployment
 
-1️⃣ Use Listed Endpoint (Recommended)
+### 1️⃣ Use Listed Endpoint (Recommended)
+```bash
 # Install required Python package
 pip install requests
+```
+```python
 import requests
 
 # Dify API Configuration
@@ -48,12 +51,21 @@ headers = {
 # Send request to Dify API
 response = requests.post(DIFY_API_URL, json=data, headers=headers)
 print(response.json())  # Print the response
-2️⃣ Local Deployment (Docker)
+```
+
+---
+
+### 2️⃣ Local Deployment (Docker)
+```bash
 git clone https://github.com/your-repo/GEMA-Score.git
 cd GEMA-Score
 docker-compose up -d
-📖 Usage Example (Local API)
+```
 
+---
+
+## 📚 Usage Example (Local API)
+```python
 import requests
 
 # Local API Configuration
@@ -64,6 +76,7 @@ headers = {"Content-Type": "application/json"}
 # Send request to local API
 response = requests.post(url, json=data, headers=headers)
 print(response.json())  # Print the response
+```
 
 ---
 
