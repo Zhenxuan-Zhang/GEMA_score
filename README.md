@@ -17,44 +17,53 @@
 
 ---
 
-## 📦 Installation & Deployment
+📦 Installation & Deployment
 
-### 1️⃣ Use Listed Endpoint (Recommended)
-```bash
-# Use Python to request GEMA-Score API
+1️⃣ Use Listed Endpoint (Recommended)
+# Install required Python package
 pip install requests
-
 import requests
 
-url = "https://udify.app/chat/jPOWanLUMb0NAeKI"
-data = {"input": "your medical report text"}
-headers = {"Authorization": "Bearer YOUR_API_KEY"}
+# Dify API Configuration
+DIFY_API_URL = "https://api.dify.ai/v1/chat-messages"
+DIFY_API_KEY = "YOUR_API_KEY"
 
-response = requests.post(url, json=data, headers=headers)
-print(response.json())
-```
+# Example input medical reports
+data = {
+    "inputs": {
+        "GroundTruth_medical_report": "The heart is normal in size. The lungs are clear.",
+        "Candidate_medical_report": "No focal areas of consolidation. No pleural effusions."
+    },
+    "query": "Evaluate these medical reports.",
+    "user": "user-123",
+    "response_mode": "blocking"
+}
 
-### 2️⃣ Local Deployment (Docker)
-```bash
+# Set request headers
+headers = {
+    "Authorization": f"Bearer {DIFY_API_KEY}",
+    "Content-Type": "application/json"
+}
+
+# Send request to Dify API
+response = requests.post(DIFY_API_URL, json=data, headers=headers)
+print(response.json())  # Print the response
+2️⃣ Local Deployment (Docker)
 git clone https://github.com/your-repo/GEMA-Score.git
 cd GEMA-Score
 docker-compose up -d
-```
+📖 Usage Example (Local API)
 
----
-
-## 📖 Usage Example
-
-```python
 import requests
 
+# Local API Configuration
 url = "http://localhost:8000/score"
 data = {"report": "Chest X-ray shows mild pleural effusion ..."}
 headers = {"Content-Type": "application/json"}
 
+# Send request to local API
 response = requests.post(url, json=data, headers=headers)
-print(response.json())
-```
+print(response.json())  # Print the response
 
 ---
 
