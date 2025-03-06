@@ -1,12 +1,11 @@
 # GEMA-Score: Granular Explainable Multi-Agent Score for Radiology Report Evaluation
 
 ![GEMA-Score](https://img.shields.io/badge/GEMA-Score-blue.svg)
-![Dify](https://img.shields.io/badge/Based%20on-Dify-blue)
 ![License](https://img.shields.io/github/license/your-repo/GEMA-Score)
 
 ## 🚀 Project Overview
 
-**GEMA-Score** is a medical report evaluation tool based on **Dify**, designed to provide a **granular, explainable, multi-agent scoring** mechanism for automated medical report assessment. It integrates **LLM (Large Language Model)** and **Multi-Agent Evaluation Strategy**, ensuring the assessment not only covers **key medical information** but also evaluates **lesion location, severity, medical terminology, and readability**.
+**GEMA-Score** is a medical report evaluation tool designed to provide a **granular, explainable, multi-agent scoring** mechanism for automated medical report assessment. It integrates **LLM (Large Language Model)** and **Multi-Agent Evaluation Strategy**, ensuring the assessment not only covers **key medical information** but also evaluates **lesion location, severity, medical terminology, and readability**.
 
 > 🎯 Online Demo: [GEMA-Score Demo](https://udify.app/chat/jPOWanLUMb0NAeKI)
 
@@ -20,7 +19,7 @@
 
 ## 📦 Installation & Deployment
 
-### 1️⃣ Use Dify Endpoint (Recommended)
+### 1️⃣ Use Listed Endpoint (Recommended)
 ```bash
 # Use Python to request GEMA-Score API
 pip install requests
