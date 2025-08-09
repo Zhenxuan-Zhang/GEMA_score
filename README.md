@@ -37,43 +37,7 @@ We provide two specialized demo versions:
 
 ## 📦 Installation & Deployment
 
-### 1️⃣ Use Listed Endpoint (Recommended)
-```bash
-# Install required Python package
-pip install requests
-```
-```python
-import requests
-
-# Dify API Configuration
-DIFY_API_URL = "https://api.dify.ai/v1/chat-messages"
-DIFY_API_KEY = "YOUR_API_KEY"
-
-# Example input medical reports
-data = {
-    "inputs": {
-        "GroundTruth_medical_report": "The heart is normal in size. The lungs are clear.",
-        "Candidate_medical_report": "No focal areas of consolidation. No pleural effusions."
-    },
-    "query": "Evaluate these medical reports.",
-    "user": "user-123",
-    "response_mode": "blocking"
-}
-
-# Set request headers
-headers = {
-    "Authorization": f"Bearer {DIFY_API_KEY}",
-    "Content-Type": "application/json"
-}
-
-# Send request to Dify API
-response = requests.post(DIFY_API_URL, json=data, headers=headers)
-print(response.json())  # Print the response
-```
-
----
-
-### 2️⃣ Run Locally with HuggingFace Transformers
+### 1️⃣ Run Locally with HuggingFace Transformers
 We provide distilled models for CT and X-ray evaluation.
 HuggingFace model hub: https://huggingface.co/Gemascore/GEMA-Score-distilled
 ```bash
@@ -118,6 +82,42 @@ output_ids = model.generate(**inputs, max_new_tokens=1024)
 output_text = processor.batch_decode(output_ids, skip_special_tokens=True)[0]
 print(output_text)
 ```
+---
+
+### 2️⃣ Use Listed Endpoint (Recommended)
+```bash
+# Install required Python package
+pip install requests
+```
+```python
+import requests
+
+# Dify API Configuration
+DIFY_API_URL = "https://api.dify.ai/v1/chat-messages"
+DIFY_API_KEY = "YOUR_API_KEY"
+
+# Example input medical reports
+data = {
+    "inputs": {
+        "GroundTruth_medical_report": "The heart is normal in size. The lungs are clear.",
+        "Candidate_medical_report": "No focal areas of consolidation. No pleural effusions."
+    },
+    "query": "Evaluate these medical reports.",
+    "user": "user-123",
+    "response_mode": "blocking"
+}
+
+# Set request headers
+headers = {
+    "Authorization": f"Bearer {DIFY_API_KEY}",
+    "Content-Type": "application/json"
+}
+
+# Send request to Dify API
+response = requests.post(DIFY_API_URL, json=data, headers=headers)
+print(response.json())  # Print the response
+```
+
 ---
 
 ## 🔥 Contribution Guide
