@@ -73,13 +73,51 @@ print(response.json())  # Print the response
 
 ---
 
-### 2️⃣ Local Deployment (Docker)
+### 2️⃣ Run Locally with HuggingFace Transformers
+We provide distilled models for CT and X-ray evaluation.
+HuggingFace model hub: https://huggingface.co/Gemascore/GEMA-Score-distilled
 ```bash
-git clone https://github.com/your-repo/GEMA-Score.git
-cd GEMA-Score
-docker-compose up -d
+pip install transformers accelerate torch
 ```
+```python
+import torch
+from transformers import AutoModelForCausalLM, AutoProcessor
 
+# Model repo & subfolder (choose CT or Xray version)
+REPO_ID = "Gemascore/GEMA-Score-distilled"
+SUBFOLDER = "GEMA-Score-distilled-CT-llama"  # Options: 
+# "GEMA-Score-distilled-CT-llama"
+# "GEMA-Score-distilled-CT-Qwen"
+# "GEMA-Score-distilled-Xray-llama"
+# "GEMA-Score-distilled-Xray-Qwen"
+
+# Load model & processor
+model = AutoModelForCausalLM.from_pretrained(
+    REPO_ID,
+    subfolder=SUBFOLDER,
+    torch_dtype=torch.float16 if torch.cuda.is_available() else torch.float32,
+    device_map="auto",
+    trust_remote_code=True
+)
+
+processor = AutoProcessor.from_pretrained(
+    REPO_ID,
+    subfolder=SUBFOLDER,
+    trust_remote_code=True
+)
+
+# Example inference
+prompt = """
+Evaluate the following reports in JSON format.
+Candidate: 'No focal areas of consolidation.'
+Reference: 'The heart is normal in size. The lungs are clear.'
+"""
+
+inputs = processor(text=prompt, return_tensors="pt").to(model.device)
+output_ids = model.generate(**inputs, max_new_tokens=1024)
+output_text = processor.batch_decode(output_ids, skip_special_tokens=True)[0]
+print(output_text)
+```
 ---
 
 ## 📚 Usage Example (Local API)
