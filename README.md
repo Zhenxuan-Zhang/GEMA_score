@@ -120,21 +120,5 @@ print(output_text)
 ```
 ---
 
-## 📚 Usage Example (Local API)
-```python
-import requests
-
-# Local API Configuration
-url = "http://localhost:8000/score"
-data = {"report": "Chest X-ray shows mild pleural effusion ..."}
-headers = {"Content-Type": "application/json"}
-
-# Send request to local API
-response = requests.post(url, json=data, headers=headers)
-print(response.json())  # Print the response
-```
-
----
-
 ## 🔥 Contribution Guide
 We welcome issues and pull requests to improve **GEMA-Score
