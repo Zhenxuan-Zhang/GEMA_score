@@ -27,6 +27,8 @@ We provide two specialized demo versions:
 
 ---
 
+**HuggingFace Models:** [https://huggingface.co/Gemascore/GEMA-Score-distilled](https://huggingface.co/Gemascore/GEMA-Score-distilled)
+
 ## ✨ Features
 - ✅ **Multi-Agent Scoring Architecture**: Includes entity extraction, objective clinical accuracy, subjective expressiveness, and overall evaluation agents.
 - 🔍 **Explainable Scoring**: Combines NER-F1, medical terminology consistency, LLM-based scoring, and more.
